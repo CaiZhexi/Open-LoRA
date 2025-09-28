@@ -399,25 +399,11 @@ tensorboard --logdir=logs --port=6006
 
 本项目采用 Apache 2.0 许可证。详情请参阅 [LICENSE](LICENSE) 文件。
 
-## 🙏 致谢
-
-- [Qwen团队](https://github.com/QwenLM/Qwen) 提供优秀的基础模型
-- [Hugging Face](https://huggingface.co/) 提供transformers库和模型托管
-- [Microsoft LoRA](https://github.com/microsoft/LoRA) 提供参数高效微调技术
-- [bitsandbytes](https://github.com/TimDettmers/bitsandbytes) 提供量化技术支持
-
-## 📞 联系方式
-
-- **项目主页**：[https://github.com/your-username/Open-LoRA](https://github.com/your-username/Open-LoRA)
-- **问题反馈**：[GitHub Issues](https://github.com/your-username/Open-LoRA/issues)
-- **邮箱**：your-email@example.com
-
----
 
 <div align="center">
 
 **⭐ 如果这个项目对你有帮助，请给我们一个Star！⭐**
 
-Made with ❤️ by Open-LoRA Team
+Made with ❤️ by czx
 
 </div>
