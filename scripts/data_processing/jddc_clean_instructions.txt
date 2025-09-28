@@ -1,0 +1,27 @@
+
+输入数据结构（原始CSV）：
+session_id    user_id    waiter_send    is_transfer    is_repeat    content
+
+字段说明：
+- session_id: 会话ID，用于分组
+- waiter_send: 消息发送方，0=用户，1=客服
+- content: 对话文本内容
+
+输出目标格式（train.jsonl，每行一条JSON）：
+{"conversations":[{"role":"system","content":"你是一个京东客服机器人，帮助用户解答问题。"},...]}
+
+清洗规则：
+1. 按session_id分组，每个分组对应一条训练样本
+2. 在每个样本开头插入：
+   {"role":"system","content":"你是一个京东客服机器人，帮助用户解答问题。"}
+3. 将分组内消息按时间顺序加入conversations数组：
+   - waiter_send=0 对应 {"role":"user","content":"..."}
+   - waiter_send=1 对应 {"role":"assistant","content":"..."}
+4. 丢弃content为空的行
+5. 丢弃只包含单方发言（全部user或全部assistant）的会话
+6. 去除重复内容的消息
+7. 建议控制每个对话3~6轮，总token不超过2048
+8. 输出编码为UTF-8，文件名train.jsonl，每行一个JSON对象
+
+示例：
+{"conversations":[{"role":"system","content":"你是一个京东客服机器人，帮助用户解答问题。"},{"role":"user","content":"什么时候能发货啊"},{"role":"assistant","content":"请您稍等一下，正在为您核实处理中哦~"}]}
